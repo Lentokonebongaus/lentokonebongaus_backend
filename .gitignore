@@ -1,3 +1,2 @@
-csv
-venv
-_pycache_
+*
+!lentokone_backend.py
