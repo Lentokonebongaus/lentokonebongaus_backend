@@ -37,7 +37,7 @@ columns = [
 EXAMPLE_ICAO24 = "aaef89"
 planes = []
 
-with open('./csv/aircraftDatabase-2022-03.csv') as csvfile:
+with open('./csv/aircraftDatabase-2022-04.csv') as csvfile:
         planes_data = csv.reader(csvfile, delimiter=',')
         for index, row in enumerate(planes_data):
             if(index != 0):
