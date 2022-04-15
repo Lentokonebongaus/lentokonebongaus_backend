@@ -162,8 +162,6 @@ def plane_in_planes_folder(manufacturer, model, owner):
             return True
     return False
 
-def 
-
 
 def get_newest_local_csv_path():
     cwd = os.getcwd()
