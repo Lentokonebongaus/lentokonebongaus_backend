@@ -93,6 +93,15 @@ def csv_folder_in_cwd():
     else:
         return False
 
+def planes_folder_in_cwd():
+    folders = os.listdir()
+    if("planes" in folders):
+        return True
+    else:
+        return False
+
+
+
 def download_csv(local_csv_folder_path, remote_csv_file_path):
     csv_txt_content = requests.get(OPENSKY_CSV_DIRECTORY_URL+remote_csv_file_path).text
     print("File downloaded, writing to disk...")
@@ -133,6 +142,29 @@ def initialize_csv_directory():
 
     return True
 
+def initialize_planes_directory():
+    cwd = os.getcwd()
+
+    if(not planes_folder_in_cwd()):
+        print(f"\n'planes' folder not found in {cwd}. \nCreating folder 'planes'")
+        os.mkdir(os.path.join(cwd,"planes"))
+
+    planes_folder_path = os.path.join(cwd,"planes")
+    files_in_planes_folder = os.listdir(planes_folder_path)
+    print(f"{len(files_in_planes_folder)} files in 'planes' folder")
+
+def plane_in_planes_folder(manufacturer, model, owner):
+    cwd = os.getcwd()
+    planes_folder_path = os.path.join(cwd,"planes")
+    files_in_planes_folder = os.listdir(planes_folder_path)
+    for file_name in files_in_planes_folder:
+        if file_name == f"{manufacturer}_{model}":
+            return True
+    return False
+
+def 
+
+
 def get_newest_local_csv_path():
     cwd = os.getcwd()
     csv_folder_path = os.path.join(cwd,"csv")
@@ -166,6 +198,12 @@ def get_by_icao24():
         return jsonify(plane)
     else:
         return jsonify({"ok":False})
+
+@app.route("/image")
+def get_image():
+    manufacturer = request.args.get("manufacturer")
+    model = request.args.get("model")
+
 # --------------------------------------
 
 
