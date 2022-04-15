@@ -203,7 +203,7 @@ def plane_exists_in_planes(manufacturer, model, owner):
     file_name_model = model.replace(" ", "_")
     file_name_owner = owner.replace(" ", "_")
     file_full_name = f"{file_name_manufacturer}+{file_name_model}+{file_name_owner}.jpg"
-    assert(os.path.exists("plane_imgs"))
+    assert(os.path.exists("plane_imgs")), f"No plane_imgs folder found by plane_exists_in_planes(). Current cwd: {os.getcwd()}"
     plane_files = os.listdir("plane_imgs")
     print(f"Plane files: {plane_files}")
     print(f"New file: {file_full_name}")
@@ -219,7 +219,7 @@ def get_plane_image_path(manufacturer, model, owner):
     file_name_model = model.replace(" ", "_")
     file_name_owner = owner.replace(" ", "_")
     file_full_name = f"{file_name_manufacturer}+{file_name_model}+{file_name_owner}.jpg"
-    assert(os.path.exists("plane_imgs"))
+    assert(os.path.exists("plane_imgs")), f"No plane_imgs folder found by get_plane_image_path(). Current cwd: {os.getcwd()}"
     plane_files = os.listdir("plane_imgs")
     for plane_file in plane_files:
         if plane_file == file_full_name:
