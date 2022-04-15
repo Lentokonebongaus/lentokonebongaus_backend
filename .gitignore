@@ -2,5 +2,6 @@
 !lentokone_backend.py
 !image_scraper_test.py
 !requirements.txt
+!__init__.py
 !csv/
 !.csv
