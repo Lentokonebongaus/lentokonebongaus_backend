@@ -7,6 +7,7 @@ import datetime
 import requests
 from bs4 import BeautifulSoup
 from flask import Flask, request, jsonify
+import io
 
 #-------------------------------------------------#
 # Use:                                            #
@@ -105,7 +106,7 @@ def planes_folder_in_cwd():
 def download_csv(local_csv_folder_path, remote_csv_file_path):
     csv_txt_content = requests.get(OPENSKY_CSV_DIRECTORY_URL+remote_csv_file_path).text
     print("File downloaded, writing to disk...")
-    with open(os.path.join(local_csv_folder_path, remote_csv_file_path), 'w', encoding='UTF8') as f:
+    with open(os.path.join(local_csv_folder_path, remote_csv_file_path), 'w', encoding='utf-8') as f:
         f.write(csv_txt_content)
         f.close()
     print(f"{remote_csv_file_path} saved to {local_csv_folder_path}")
@@ -211,13 +212,15 @@ if(initialize_csv_directory()==True):
     csv_file_path =  os.path.join(csv_folder_path, get_newest_local_csv_path())
 
     # Populating PLANES list with the initialized csv file's values and COLUMNS list's keys. 
-    with open(csv_file_path) as csv_file:
-        planes_data = csv.reader(csv_file, delimiter=',')
-        for index, row in enumerate(planes_data):
-            # Columns are hard coded in COLUMNS list, so skipping the first row.
-            if(index != 0):
-                newPlane = {}
-                for index, value in enumerate(row):
-                    # Row values are indexed similarly to key values in COLUMNS.
-                    newPlane[COLUMNS[index]] = value
+    csv_file = io.open(csv_file_path, mode="r", encoding="utf-8")
+    print(f"Opened file {csv_file}")
+    planes_data = csv.reader(csv_file, delimiter=',')
+    print(f"Read CSV data: {planes_data}")
+    for index, row in enumerate(planes_data):
+        # Columns are hard coded in COLUMNS list, so skipping the first row.
+        if(index != 0):
+            newPlane = {}
+            for index, value in enumerate(row):
+                # Row values are indexed similarly to key values in COLUMNS.
+                newPlane[COLUMNS[index]] = value
                 PLANES.append(newPlane)
