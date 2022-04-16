@@ -263,6 +263,7 @@ def save_plane_image(manufacturer, model, owner):
         print("Plane file name not in 'planes. Creating a new file...")
         for i, (image_name, turl, murl) in enumerate(ActualImages):
             # TODO: Remove unnecessary loop
+            print(f"Searching image from {os.path.join(DIR, FILE_NAME)}")
             if(i==0):
                 try:
                     raw_img = urllib.request.urlopen(turl).read()
