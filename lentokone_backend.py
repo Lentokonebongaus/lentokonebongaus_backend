@@ -185,7 +185,7 @@ def plane_data_compact(icao24):
     plane_compact = {"manufacturername": plane["manufacturername"], "model":plane["model"], "operator":plane["operator"], "operatorcallsign": plane["operatorcallsign"], "owner":plane["owner"]}
     return plane_compact
 # --------------------------------------
-
+"""
 # ----------- Image scraper ------------
 
 #!/usr/bin/env python3
@@ -277,6 +277,8 @@ def save_plane_image(manufacturer, model, owner):
         print("Plane already in 'plane_imgs' folder")
 
 #save_plane_image("Airbus","ATR 72 500","Finnair")
+
+"""
 
 # -------- Flask API endpoint ----------
 @app.route("/")
