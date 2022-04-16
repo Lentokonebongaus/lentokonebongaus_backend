@@ -291,6 +291,7 @@ def get_by_icao24():
         return jsonify({"ok":False})
 
 
+"""
 @app.route("/image")
 def get_image():
     manufacturer = request.args.get("manufacturer")
@@ -300,6 +301,7 @@ def get_image():
         save_plane_image(manufacturer, model, owner)
     plane_img_file_path = get_plane_image_path(manufacturer, model, owner)
     return send_file(plane_img_file_path, mimetype='image/gif')
+"""
     
 
 # --------------------------------------
