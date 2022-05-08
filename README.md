@@ -1,7 +1,7 @@
 # Lentokonebongaus-backend
 
 
-Lentokonebongaus-backend serves lentokonebongaus-frontend (Airplane GO) through a Flask API by sending a JSON response containing plane model, manufacturer, owner and other plane details that can't be fetched from The OpenSky Network's API. Can also be used as a stand-alone REST API at http://172.105.80.249?icao24={???}.
+Lentokonebongaus-backend serves lentokonebongaus-frontend (Airplane GO) through a Flask API by sending a JSON response containing plane model, manufacturer, owner and other plane details that can't be fetched from The OpenSky Network's API. Lentokonebongaus-backend can also be used as a stand-alone REST API at http://172.105.80.249?icao24={???}.
 
 ## Inner workings
 Lentokonebongaus-backend is run on a Flask server, and when the server recieves a get request with an URL parameter of "icao24", it will search through a CSV file to link the icao24 code to plane details, which the server will then return as a JSON. If no plane details are found, the server will return a JSON containing *{ok:false}* instead.
