@@ -8,7 +8,38 @@ Lentokonebongaus-backend is run on a Flask server, and when the server receives 
 
 The backend uses automatically downloaded CSV file from https://opensky-network.org/datasets/metadata/. Everytime the Flask server is started, lentokonebongaus-backend will fetch a list of CSV filenames from OpenSky Network, parse dates from those filenames, find the newest remote CSV file, check whether the current local CVS file is up to date, and download the newest CSV file if an older CSV file exists locally or doesn't exist at all.
 
-####  Possible directions for future development
+### Example JSON:
+```
+{
+    "acars":"false",
+    "adsb":"false",
+    "built":"",
+    "categoryDescription":"",
+    "engines":"",
+    "firstflightdate":"",
+    "icao24":"4601f7",
+    "icaoaircrafttype":"L2T",
+    "linenumber":"","manufacturericao":"ATR",
+    "manufacturername":"Avions De Transport Regional",
+    "model":"ATR 72 500",
+    "modes":"false",
+    "notes":"",
+    "operator":"",
+    "operatorcallsign":"WESTBIRD",
+    "operatoriata":"",
+    "operatoricao":"WBA",
+    "owner":"Nordic Regional Airlines",
+    "registered":"",
+    "registration":"OH-ATJ",
+    "reguntil":"",
+    "seatconfiguration":"",
+    "serialnumber":"792",
+    "status":"",
+    "testreg":"",
+    "typecode":"AT75"
+}
+```
+##  Possible directions for future development
 
 Airplane GO currently uses Azure to search for a URL of a plane picture corresponding to plane details fetched from backend, but lentokonebongaus-backend also contains commented out functions for automatically searching and downloading relevant plane pictures from Bing and saving the pictures to seperate local folders. Firstly, this could be used as way to not use Azure. Secondly, by having the pictures stored locally for any given plane model, manufacturer and owner combination, there could be greater control over the images displayed in Airplane Go.
 
